@@ -19,25 +19,30 @@ fraction add(fraction f1,fraction f2)
 	sum.x = (f1.x*f2.y)+(f2.x*f1.y);
 	return sum;
 }
-fraction simplify(fraction sum)
+
+int findhcf(fraction result)
 {
-	int hcf = 0;
+	int hcf = 1;
 	int min = 0;
-	if(sum.x<sum.y)
+	if(result.x<result.y)
 	{
-		min = sum.x;
+		min = result.x;
 	}
 	else
 	{
-		min = sum.y;
+		min = result.y;
 	}
 	for(int i=1;i<=min;i++)
 	{
-		if(sum.x%i == 0 && sum.y%i == 0)
+		if(result.x%i == 0 && result.y%i == 0)
 		{
 			hcf = i;
 		}
 	}
+	return hcf;
+}
+fraction simplify(fraction sum,int hcf)
+{
 	sum.x = sum.x/hcf;
 	sum.y = sum.y/hcf;
 	return sum;
@@ -52,6 +57,7 @@ int main()
 	f1 = read(f1);
 	f2 = read(f2);
 	fraction result = add(f1,f2);
-	result = simplify(result);
+	int hcf = findhcf(result);
+	result = simplify(result,hcf);
 	display(result,f1,f2);
 }
