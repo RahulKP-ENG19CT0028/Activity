@@ -12,12 +12,17 @@ fraction read(fraction f)
 	scanf("%d",&f.y);
 	return f;
 }
-fraction addfrac(fraction f1,fraction f2)
+void addfrac(fraction f1,fraction f2)
 {
+	fraction simplify(fraction);
+	void display(fraction,fraction,fraction);
+
+
 	fraction sum;
 	sum.y = f1.y*f2.y;
 	sum.x = (f1.x*f2.y)+(f2.x*f1.y);
-	return sum;
+	fraction result = simplify(sum);
+	display(result,f1,f2);
 }
 
 int findhcf(int n,int d)
@@ -32,7 +37,7 @@ int findhcf(int n,int d)
 	{
 		min = d;
 	}
-	for(int i=1;i<=min;i++)
+	for(int i=2;i<=min;i++)
 	{
 		if(n%i == 0 && d%i == 0)
 		{
@@ -41,8 +46,10 @@ int findhcf(int n,int d)
 	}
 	return hcf;
 }
-fraction simplify(fraction sum,int hcf)
+fraction simplify(fraction sum)
 {
+	int findhcf(int,int);
+	int hcf = findhcf(sum.x,sum.y);
 	sum.x = sum.x/hcf;
 	sum.y = sum.y/hcf;
 	return sum;
@@ -56,8 +63,5 @@ int main()
 	fraction f1,f2;
 	f1 = read(f1);
 	f2 = read(f2);
-	fraction result = addfrac(f1,f2);
-	int hcf = findhcf(result.x,result.y);
-	result = simplify(result,hcf);
-	display(result,f1,f2);
+	addfrac(f1,f2);
 }
