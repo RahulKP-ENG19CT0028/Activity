@@ -1,20 +1,23 @@
 #include<stdio.h>
-int input(int s)
+void add(int);
+void display(float);
+void input()
 {
+	int s;
 	printf("How many numbers do you want to add?\n");
-  scanf("%d",&s);
-  return s;
+	scanf("%d",&s);
+	add(s);
 }
-int add(int s)
+void add(int s)
 {
-  float n,sum=0.0;
-  printf("Enter the numbers\n");
-  for(int i=1;i<=s;i++)
-  {
-    scanf("%f",&n);
-    sum=sum+n;
-  }
-  return sum;
+	float n,sum=0.0;
+	printf("Enter the numbers\n");
+	for(int i=1;i<=s;i++)
+	{
+		scanf("%f",&n);
+		sum=sum+n;
+	}
+	display(sum);
 }
 void display(float sum)
 {
@@ -22,8 +25,5 @@ void display(float sum)
 }
 int main()
 {
-	int size;
-	size = input(size);
-	float sum = add(size);
-	display(sum);
+	input();
 }
