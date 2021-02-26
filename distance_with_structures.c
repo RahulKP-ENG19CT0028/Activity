@@ -6,26 +6,20 @@ struct point
 	double x;
 	double y;
 };
-point readp1(point p1)
+point readp(point p)
 {
 	printf("Enter the x coordinate of first point\n");
-	scanf("%lf",&p1.x);
+	scanf("%lf",&p.x);
 	printf("Enter the y coordinate of first point\n");
-	scanf("%lf",&p1.y);
-	return p1;
+	scanf("%lf",&p.y);
+	return p;
 }
-point readp2(point p2)
+void distance(point p1,point p2)
 {
-	printf("Enter the x coordinate of Second point\n");
-	scanf("%lf",&p2.x);
-	printf("Enter the y coordinate of Second point\n");
-	scanf("%lf",&p2.y);
-	return p2;
-}
-double distance(point p1,point p2)
-{
+	void display(double);
 	double dist=sqrt(pow((p2.x-p1.x),2)+pow((p2.y-p1.y),2));
-	return dist;
+	
+	display(dist);
 }
 void display(double distance)
 {
@@ -34,9 +28,8 @@ void display(double distance)
 int main()
 {
 	point p1,p2;
-	p1=readp1(p1);
-	p2=readp2(p2);
-	double d=distance(p1,p2);
-	display(d);
+	p1=readp(p1);
+	p2=readp(p2);
+	distance(p1,p2);
 	return 0;
 }
