@@ -1,32 +1,60 @@
 #include<stdio.h>
 struct fraction
 {
-float x;
-float y;
+int x;
+int y;
 };
-void add_frac()
+
+int read(fraction f[])
 {
-fraction f;
 printf("Enter the number of fractions to be added(2 0r more)\n");
 int n;
 scanf("%d",&n);
+fraction f[n];
 if(n>=2)
 {
-float sum;
 for(int i=1;i<=n;i++)
 {
-printf("Enter the numerator\n");
+printf("Enter the numerator of fraction %d\n",i);
 scanf("%f",&f.x);
-printf("Enter the denominator\n");
+printf("Enter the denominator of fraction %d\n",i);
 scanf("%f",&f.y);
-sum=sum+(f.x/f.y);
 }
-printf("The sum is %f",sum);
 }
-else printf("Invalid input\n");
-}
-int main()
+else
 {
-add_frac();
+printf("Invalid number of fractions\n");
+}
+return n;
+}
+fraction add_frac(fraction f[],int n)
+{
+	fraction sum;
+	sum.x=0;
+sum.y=1;
+	for(int i=0;i<n;i++)
+	{
+		sum.y = sum.y*f.y[i];
+		
+	}
+	
+	int prod =1;
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			if(i!=j)
+			{
+				prod = prod *f[j].y;
+			}
+		}
+		sum.x = sum.x + (f[i].x *prod);
+	}
+	return sum;
+int main()
+{	
+	fraction f[100];
+int size = read(f);
+fraction res = add_frac(f,size);
 return 0;
 }
