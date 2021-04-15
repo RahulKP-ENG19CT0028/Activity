@@ -1,29 +1,29 @@
 #include<stdio.h>
 typedef struct fraction
 {
-	int x;
-	int y;
+int x;
+int y;
 }fraction;
 
 int read(fraction f[])
 {
-	printf("Enter the number of fractions to be added(2 0r more)\n");
-	int n;
-	scanf("%d",&n);
-	if(n>=2)
-	{
-		for(int i=0;i<n;i++)
-		{
-		printf("Enter the numerator of fraction %d\n",i+1);
-		scanf("%d",&f[i].x);
-		printf("Enter the denominator of fraction %d\n",i+1);
-		scanf("%d",&f[i].y);
-		}
-	}
-	else
-	{
-		printf("Invalid number of fractions\n");
-	}
+printf("Enter the number of fractions to be added(2 0r more)\n");
+int n;
+scanf("%d",&n);
+if(n>=2)
+{
+for(int i=0;i<n;i++)
+{
+printf("Enter the numerator of fraction %d\n",i+1);
+scanf("%d",&f[i].x);
+printf("Enter the denominator of fraction %d\n",i+1);
+scanf("%d",&f[i].y);
+}
+}
+else
+{
+printf("Invalid number of fractions\n");
+}
 return n;
 }
 fraction add_frac(fraction f[],int n)
@@ -32,7 +32,7 @@ fraction add_frac(fraction f[],int n)
 
 	fraction sum;
 	sum.x=0;
-	sum.y=1;
+sum.y=1;
 	for(int i=0;i<n;i++)
 	{
 		sum.y = sum.y*f[i].y;
@@ -83,24 +83,19 @@ fraction simplify (fraction sum)
 void display(fraction f[],int n,fraction res)
 {
 	printf("The sum of ");
-	for(int i=0;i<n;i++)
+	int i;
+	for( i=0;i<n-1;i++)
 	{
-		if(i!=n-1)
-		{
-			printf("%d/%d + ",f[i].x,f[i].y);
-		}
-		else
-		{
-			printf("%d/%d is ",f[i].x,f[i].y);
-		}
-	}
-	printf("%d/%d",res.x,res.y);
+		printf("%d/%d + ",f[i].x,f[i].y);
+}
+printf("%d/%d is ",f[i].x,f[i].y);
+printf("%d/%d",res.x,res.y);
 }
 int main()
 {	
 	fraction f[100];
-	int size = read(f);
-	fraction res = add_frac(f,size);
-	display(f,size,res);
-	return 0;
+int size = read(f);
+fraction res = add_frac(f,size);
+display(f,size,res);
+return 0;
 }
